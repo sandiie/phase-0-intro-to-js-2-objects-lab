@@ -1,21 +1,48 @@
 
 
-function updateObjectWithKeyAndValue(object, key, value) {
-  return Object.assign({}, object, {[key]: value});
-}
+function destructivelyUpdateEmployeeWithKeyAndValue(employee, key, value) {
+    employee[key] = value;
+    return employee;
+  }
+  
+  
+  const  employee = {
+    name: 'Sandie',
+    role: 'Developer'
+  };
+  
+  console.log(employee); 
+  
+  destructivelyUpdateEmployeeWithKeyAndValue(employee, 'role', 'Product Manager');
+  
+  console.log(employee); // After update
+  // Sample employee object
+ employee = {
+    name: 'Jackie Lisa',
+    age: 30,
+    position: 'Developer'
+  };
+  
+  function updateEmployeeWithKeyAndValue(employee, key, value) {
+    
+    return {
+      ...employee,
+      [key]: value 
+    };
+  }
+  
+  
+  const updatedEmployee = updateEmployeeWithKeyAndValue(employee, 'position', 'Senior Developer');
+  console.log(updatedEmployee); 
 
-function destructivelyUpdateObjectWithKeyAndValue(object, key, value){
-  object[key] = value;
-  return object;
-}
-
-function deleteFromObjectByKey(object, key) {
-  var clone = Object.assign({}, object);
-  delete clone[key];
-  return clone;
-}
-
-function destructivelyDeleteFromObjectByKey(object, key) {
-  delete object[key];
-  return object;
-}
+  function deleteFromEmployeeByKey(employee, key) {
+    const newEmployee = Object.assign({}, employee);
+    delete newEmployee[key];
+    return newEmployee;
+  }
+  function destructivelyDeleteFromEmployeeByKey(employee, key) {
+    delete employee[key];
+    return employee;
+  }
+  
+  
